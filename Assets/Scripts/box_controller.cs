@@ -15,7 +15,6 @@ public class box_controller : MonoBehaviour , IPointerClickHandler
     void Start(){
         _parent = transform.root.gameObject;
         _ball = GameObject.Find("Ball");
-        process_count = 0;
     }
 
     void Update(){
@@ -36,7 +35,17 @@ public class box_controller : MonoBehaviour , IPointerClickHandler
             process_vector = new Vector3(-30.0f / (float)initial_process_count, 0.0f, 0.0f);
             _ball.transform.position += new Vector3(0.0f, 1.0f, 0.0f);
         }
+        if (eventData.pointerPress.name == "box_upfront_wall"){
+            process_count = initial_process_count;
+            process_vector = new Vector3(-30.0f / (float)initial_process_count, 0.0f, 0.0f);
+            _ball.transform.position += new Vector3(0.0f, 1.0f, 0.0f);
+        }
         if(eventData.pointerPress.name == "box_left_wall"){
+            process_count = initial_process_count;
+            process_vector = new Vector3(0.0f, 0.0f, 30.0f / (float)initial_process_count);
+            _ball.transform.position += new Vector3(0.0f, 1.0f, 0.0f);
+        }
+        if(eventData.pointerPress.name == "box_upleft_wall"){
             process_count = initial_process_count;
             process_vector = new Vector3(0.0f, 0.0f, 30.0f / (float)initial_process_count);
             _ball.transform.position += new Vector3(0.0f, 1.0f, 0.0f);
@@ -46,7 +55,17 @@ public class box_controller : MonoBehaviour , IPointerClickHandler
             process_vector = new Vector3(30.0f / (float)initial_process_count, 0.0f, 0.0f);
             _ball.transform.position += new Vector3(0.0f, 1.0f, 0.0f);
         }
+        if(eventData.pointerPress.name == "box_upback_wall"){
+            process_count = initial_process_count;
+            process_vector = new Vector3(30.0f / (float)initial_process_count, 0.0f, 0.0f);
+            _ball.transform.position += new Vector3(0.0f, 1.0f, 0.0f);
+        }
         if(eventData.pointerPress.name == "box_right_wall"){
+            process_count = initial_process_count;
+            process_vector = new Vector3(0.0f, 0.0f, -30.0f / (float)initial_process_count);
+            _ball.transform.position += new Vector3(0.0f, 1.0f, 0.0f);
+        }
+        if(eventData.pointerPress.name == "box_upright_wall"){
             process_count = initial_process_count;
             process_vector = new Vector3(0.0f, 0.0f, -30.0f / (float)initial_process_count);
             _ball.transform.position += new Vector3(0.0f, 1.0f, 0.0f);
